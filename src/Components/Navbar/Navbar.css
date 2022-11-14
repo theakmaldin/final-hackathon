@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  padding-right: 30px;
+}
+
+.content-navbar {
+  position: fixed;
+  padding-left: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(13, 20, 48, 0.9);
+  height: 70px;
+  box-shadow: rgb(0 0 0 / 0%) 0px 1px 3px;
+}
