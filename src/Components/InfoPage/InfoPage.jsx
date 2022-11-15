@@ -5,7 +5,7 @@ import "./InfoPage.css";
 const InfoPage = () => {
   return (
     <div className="container-infoPage">
-      {<Navbar />}
+      {/* {<Navbar />} */}
       <div className="box-infoPage-1">
         <div className="content-infoPage-1">
           <p>Сторона интернет-маркетинга</p>
@@ -17,8 +17,8 @@ const InfoPage = () => {
           <p className="infoPage-grad">надоход 400 000 тг/мес</p>
 
           <div className="btn-infoPage-1">
+            {/* <div className="infoPage-stick"></div> */}
             <button className="btn-1">Участвовать</button>
-            <div className="infoPage-stick"> </div>
             <ul>
               <li>за руку с профи</li>
               <li>с гарантией трудоустройства</li>

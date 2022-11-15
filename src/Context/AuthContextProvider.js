@@ -1,7 +1,20 @@
-import React, { createContext, useEffect, useState } from "react";
-import fire from "../fire";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  // getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../fire";
 
 export const authContext = createContext();
+
+export const useAuth = () => {
+  return useContext(authContext);
+};
+
+// const auth = getAuth();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
@@ -11,78 +24,68 @@ const AuthContextProvider = ({ children }) => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState("");
 
-  // очищение ошибок
   const clearError = () => {
     setEmailError("");
     setPasswordError("");
   };
 
-  // очищение инпутов
   const clearInputs = () => {
     setEmail("");
     setPassword("");
   };
 
-  // Функция для регистрации
   const handleSignUp = () => {
     console.log(email);
     clearError();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(error => {
-        switch (error.code) {
-          case "auth/email-already-in-use":
-            setEmailError(error.message);
-            break;
-          case "auth/invalid-email":
-            setEmailError(error.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(error.message);
-            break;
-          default:
-            setEmailError(error.message);
-            setPasswordError(error.message);
-        }
-      });
+    createUserWithEmailAndPassword(auth, email, password).catch(error => {
+      switch (error.code) {
+        case "auth/email-already-in-use":
+        case "auth/invalid-email":
+          setEmailError(error.message);
+          break;
+        case "auth/weak-password":
+          setPasswordError(error.message);
+          break;
+        default:
+          setEmailError(error.message);
+          setPasswordError(error.message);
+      }
+    });
   };
 
-  // Функция для логина
   const handleLogin = () => {
     clearError();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(error => {
-        switch (error.code) {
-          case "auth/invalid-email":
-          case "auth/user-not-found":
-          case "auth/user-disabled":
-            setEmailError(error.message);
-            break;
-          default:
-            setEmailError(error.message);
-            setPasswordError(error.message);
-        }
-      });
+    signInWithEmailAndPassword(auth, email, password).catch(error => {
+      switch (error.code) {
+        case "auth/invalid-email":
+        case "auth/user-not-found":
+        case "auth/user-disabled":
+          setEmailError(error.message);
+          break;
+        case "auth/wrong-password":
+          setPasswordError(error.message);
+          break;
+        default:
+          setEmailError(error.message);
+          setPasswordError(error.message);
+      }
+    });
   };
 
   const handleLogOut = () => {
-    fire.auth().signOut();
+    signOut(auth);
   };
 
   const authListener = () => {
-    fire.auth().onAuthStateChanged(currentUser => {
-      if (currentUser) {
+    onAuthStateChanged(auth, user => {
+      if (user) {
         clearInputs();
-        setUser(currentUser);
+        setUser(user);
       } else {
         setUser("");
       }
     });
   };
-
   useEffect(() => {
     authListener();
   }, []);
