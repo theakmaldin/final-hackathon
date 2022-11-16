@@ -20,4 +20,16 @@ a {
   background-color: rgba(13, 20, 48, 0.9);
   height: 70px;
   box-shadow: rgb(0 0 0 / 0%) 0px 1px 3px;
+  z-index: 100;
+}
+
+/* Search */
+
+.inputField {
+  color: #ffff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  height: 40px;
 }

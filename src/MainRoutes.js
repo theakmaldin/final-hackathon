@@ -7,6 +7,8 @@ import Navbar from "./Components/Navbar/Navbar";
 import AddProduct from "./Components/Admin/AddProduct/AddProduct";
 import ProductList from "./Components/Products/ProductList/ProductList";
 import ProductDetails from "./Components/Products/ProductDetails/ProductDetails";
+import EditProduct from "./Components/Admin/EditProduct/EditProduct";
+import Search from "./Components/Filter/Search";
 
 const MainRoutes = () => {
   return (
@@ -16,8 +18,10 @@ const MainRoutes = () => {
       <Route path="/auth" element={<Authorization />} />
       <Route path="/smm" element={<InfoPage />} />
       <Route path="/add" element={<AddProduct />} />
+      <Route path="/edit/:id" element={<EditProduct />} />
       <Route path="/list" element={<ProductList />} />
       <Route path="/details/:id" element={<ProductDetails />} />
+      <Route path="/search" element={<Search />} />
     </Routes>
   );
 };
