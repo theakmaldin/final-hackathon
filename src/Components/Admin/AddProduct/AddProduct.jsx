@@ -30,6 +30,7 @@ const AddProduct = () => {
       description,
       price: +price,
       img,
+      comments: [],
     };
     addProduct(obj);
     setCategory("");
@@ -88,7 +89,7 @@ const AddProduct = () => {
             </button>
           </form>
           <div className="container noAdmin">
-            <h1>У вас нет доступа!</h1>
+            <h1></h1>
           </div>
         </div>
       ) : null}

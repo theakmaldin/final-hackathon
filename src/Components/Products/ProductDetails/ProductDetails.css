@@ -242,3 +242,39 @@ body {
   background-color: #4fc08d;
   color: #ffffff;
 }
+
+.ProductDetail-btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #475275;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  color: #475275;
+  transition: 0.2s ease-in-out;
+}
+.ProductDetail-btn:before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5)
+  );
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.ProductDetail-btn:hover {
+  background: #475275;
+  color: #fff;
+}
+.ProductDetail-btn:hover:before {
+  left: 150px;
+  transition: 0.5s ease-in-out;
+}

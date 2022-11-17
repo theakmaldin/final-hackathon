@@ -1,0 +1,210 @@
+.homePage-container {
+  height: 1360px;
+  background-position: center center;
+  background-attachment: scroll;
+  background-image: url(https://static.tildacdn.com/tild3635-3962-4564-b933-643431303363/-/resize/20x/BG_2.png);
+  background: url(https://thumb.tildacdn.com/tild3635-3962-4564-b933-643431303363/-/format/webp/BG_2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.homePage-title {
+  gap: 6%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 5%;
+}
+.homePage-title p {
+}
+
+/* .homePage-block {
+  position: relative;
+  text-align: center;
+  color: white;
+} */
+
+.homePage-textBlock {
+  position: absolute;
+  top: -1%;
+  right: 55%;
+  color: white;
+  font-size: 17px;
+}
+
+.homePage-block {
+  position: relative;
+}
+
+.homePage-textTheFlow {
+  margin: 0 0 0 0;
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    rgba(210, 225, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(210, 225, 245, 1) 96%
+  );
+  -webkit-background-clip: text;
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.homePage-textIt {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.homePage-textArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homePage-arrow {
+  /* -webkit-transform: rotate(90deg); */
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+  animation: arrow 1.2s infinite linear;
+}
+@keyframes arrow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(9px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.homePage-blockInfo {
+  display: flex;
+  justify-content: center;
+  gap: 0.9%;
+  position: relative;
+}
+
+.homePage-blockInfo img {
+  width: 35%;
+}
+
+.homePage-armanDrag {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  right: 23%;
+  top: 82%;
+}
+
+.homePage-armanDrag :first-child {
+  width: 45%;
+}
+
+.homePage-btnBlue {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: "DrukTextWideTT", Arial, sans-serif;
+  line-height: 1.35;
+  font-weight: 700;
+  border-radius: 30px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(31, 180, 255, 1) 0%,
+    rgba(0, 132, 239, 1) 100%
+  );
+  border-color: transparent;
+  border-style: solid;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  width: 50%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  font-size: 23px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.homePage-btnRed {
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  width: 50%;
+  height: 8vh;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: "DrukTextWideTT", Arial, sans-serif;
+  line-height: 1.35;
+  font-weight: 700;
+  border-radius: 30px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 107, 107, 1) 0%,
+    rgba(204, 27, 34, 1) 100%
+  );
+  border-color: transparent;
+  border-style: solid;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  font-size: 21px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 40%;
+}
+
+.homePage-contextBlockMain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homePage-contentBlockBlue {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+
+.homePage-contentBlockRed {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  right: 20%;
+}
+.homePage-btnBlue:hover {
+  background: rgba(0, 132, 239, 1) 100%;
+  transition-duration: 0.5s;
+}
+.homePage-btnRed:hover {
+  background: rgba(204, 27, 34, 1) 100%;
+  transition-duration: 0.5s;
+}
+
+.homePage-imgMoon {
+  position: absolute;
+  left: 8%;
+  width: 124px;
+  top: 8%;
+  z-index: 1;
+}
+
+.homePage-imgSkyBlue {
+  position: absolute;
+  top: 20%;
+  left: -60%;
+  z-index: 1;
+}
+
+.homePage-imgSkyRed {
+  position: absolute;
+  top: 65%;
+  left: 32%;
+  z-index: 1;
+}

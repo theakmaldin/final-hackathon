@@ -90,3 +90,12 @@ body {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
+
+.css-g23bfc-MuiGrid-root {
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+}
+
+.css-r4sq9x-MuiGrid-root {
+  height: 540px;
+}

@@ -10,13 +10,13 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import "./Basket.css";
-import { basketContext } from "../../context/BasketProductProvider";
+// import "./Basket.css";
+import { basketContext } from "../../Context/BasketContexProvider";
+import OrderForm from "../OrderForm/OrderForm";
 
 const Basket = () => {
   const {
@@ -26,22 +26,25 @@ const Basket = () => {
     deleteBasketProduct,
   } = useContext(basketContext);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     getBasket();
   }, []);
 
   return (
     <>
+      {modalOpen ? <OrderForm close={setModalOpen} /> : null}
       <Container maxWidth="lg">
-        <Typography variant="h3">My Basket</Typography>
+        <Typography variant="h3">Корзина</Typography>
         {productsInBasket ? (
           <>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }}>
                 <TableHead>
                   <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>Category</TableCell>
                     <TableCell sx={{ fontWeight: "bold" }}>Title</TableCell>
-                    <TableCell sx={{ fontWeight: "bold" }}>Model</TableCell>
                     <TableCell sx={{ fontWeight: "bold" }}>Image</TableCell>
                     <TableCell sx={{ fontWeight: "bold" }}>Price</TableCell>
                     <TableCell sx={{ fontWeight: "bold" }}>Count</TableCell>
@@ -68,7 +71,7 @@ const Basket = () => {
                           }
                         />
                       </TableCell>
-                      <TableCell>{elem.subPrice} сом</TableCell>
+                      <TableCell>{elem.subPrice} $</TableCell>
                       <TableCell
                         onClick={() => deleteBasketProduct(elem.item.id)}>
                         <DeleteForeverIcon className="deleteIconBasket" />
@@ -78,8 +81,11 @@ const Basket = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-            <Button variant="contained" sx={{ margin: "20px auto" }}>
-              Buy now for {productsInBasket.totalPrice}
+            <Button
+              variant="contained"
+              sx={{ margin: "20px auto" }}
+              onClick={() => setModalOpen(true)}>
+              Оформить заказ
             </Button>
           </>
         ) : (

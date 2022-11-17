@@ -1,0 +1,34 @@
+.footer-container {
+  background-color: #0d1430;
+  height: 200px;
+  /* position: fixed;
+  bottom: 0px;
+  right: 0;
+  left: 0; */
+}
+
+.footer-title {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  padding-top: 60px;
+  line-height: 25px;
+}
+
+.footer-content li {
+  list-style: none;
+  color: white;
+}
+@media all and (max-width: 460px) {
+  .footer-title,
+  .footer-content {
+    flex-direction: column;
+  }
+}

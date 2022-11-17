@@ -4,7 +4,7 @@ body {
   padding: 0;
 }
 
-.box-infoPage-1 {
+.box-smm-1 {
   display: flex;
   justify-content: space-around;
   height: 700px;
@@ -12,7 +12,7 @@ body {
   background: url("https://static.tildacdn.com/tild6264-3335-4463-b066-333265353537/Layer_1.png");
 }
 
-.content-infoPage-1 {
+.content-smm-1 {
   padding-left: 10px;
   padding-top: 60px;
   color: white;
@@ -21,24 +21,24 @@ body {
   left: 20%;
 }
 
-.content-infoPage-1:first-child {
+.content-smm-1:first-child {
   font-size: 20px;
   font-weight: 400;
   line-height: 49px;
 }
 
-.infoPage-grad {
+.smm-grad {
   font-size: 36px;
   background-image: linear-gradient(
     180deg,
-    rgba(31, 180, 255, 1) 0%,
-    rgba(0, 132, 239, 1) 100%
+    rgba(255, 107, 107, 1) 0%,
+    rgba(204, 27, 34, 1) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.btn-infoPage-1 {
+.btn-smm-1 {
   color: white;
   display: flex;
   justify-content: space-between;
@@ -47,7 +47,7 @@ body {
   line-height: 1.5;
 }
 
-.btn-1 {
+.btn-2 {
   font-size: 20px;
   font-weight: 700;
   border-radius: 30px;
@@ -55,15 +55,39 @@ body {
   color: white;
   background-image: linear-gradient(
     180deg,
-    rgba(31, 180, 255, 1) 0%,
-    rgba(0, 132, 239, 1) 100%
+    rgba(255, 107, 107, 1) 0%,
+    rgba(204, 27, 34, 1) 100%
   );
 }
 
-.infoPage-stick {
+.smm-stick {
   opacity: 0.12;
   background-color: #ffffff;
   background-position: center center;
   border-color: transparent;
   border-style: solid;
+}
+.smmPage-img {
+  position: relative;
+  top: 0px;
+  left: 66%;
+}
+
+.smmPage-imgCloudRed {
+  position: relative;
+  top: 10%;
+  left: 22%;
+}
+
+.smmPage-imgCloudBlue {
+  position: absolute;
+  top: -10%;
+  right: 15%;
+}
+
+.smmPage-imglight {
+  position: absolute;
+  top: -1%;
+  left: 34%;
+  width: 1200px;
 }

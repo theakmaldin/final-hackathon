@@ -15,9 +15,8 @@ export const productContext = createContext();
 
 const INIT_STATE = {
   product: [],
-  filterProduct: [],
   productDetails: null,
-  searchProducts: [],
+  productsDetails: {},
 };
 
 function reducer(prevState, action) {
@@ -28,10 +27,8 @@ function reducer(prevState, action) {
       return { ...prevState, readProduct: action.payload };
     case "GET_ONE_READPRODUCT":
       return { ...prevState, productDetails: action.payload };
-    case "GET_FILPRODUCT":
-      return { ...prevState, filterProduct: action.payload };
-    case "GET_SEARCH_PRODUCTS":
-      return { ...prevState, searchProducts: action.payload };
+    case "GET_PRODUCTS_DETAILS":
+      return { ...prevState, productsDetails: action.payload };
     default:
       return prevState;
   }
@@ -54,6 +51,20 @@ const ProductContextProvider = props => {
     dispatch({
       type: "GET_PRODUCT",
       payload: productArr,
+    });
+  };
+
+  // Details //
+
+  const getProductsDetails = async id => {
+    const data = await getDocs(productCollection);
+    let productsDetails = {};
+    data.docs.forEach(doc =>
+      doc.id === id ? (productsDetails = doc.data()) : null
+    );
+    dispatch({
+      type: "GET_PRODUCTS_DETAILS",
+      payload: productsDetails,
     });
   };
 
@@ -159,25 +170,43 @@ const ProductContextProvider = props => {
 
   // Search
 
-  const getSearch = async val => {
-    if (val.length > 0) {
-      let searchVal = val.toLowerCase();
-      const data = await getDocs(productCollection);
-      const searchProducts = data.docs
-        .map(doc => ({ ...doc.data(), id: doc.id }))
-        .includes(
-          item =>
-            item.regName
-              .toLowerCase()
-              .slice(0, searchVal.length)
-              .indexOf(searchVal) !== -1
+  async function getSearch(searchVal) {
+    console.log(searchVal);
+    if (searchVal.length > 0) {
+      let searchValue = searchVal.toLowerCase();
+      const { docs } = await getDocs(collection(db, "products"));
+      const data = docs.map(item => {
+        return { ...item.data(), id: item.id };
+      });
+      let searchProducts = data.filter(elem => {
+        return (
+          elem.category
+            .toLowerCase()
+            .slice(0, searchValue.length)
+            .indexOf(searchValue) !== -1
         );
-      dispatch({ type: "GET_SEARCH_PRODUCTS", payload: searchProducts });
-      val = "";
+      });
+
+      dispatch({
+        type: "GET_PRODUCT",
+        payload: searchProducts,
+      });
+      searchVal = "";
     } else {
-      const searchProducts = [];
-      dispatch({ type: "GET_SEARCH_PRODUCTS", payload: searchProducts });
+      const searchProducts = null;
+      dispatch({
+        type: "GET_PRODUCT",
+        payload: searchProducts,
+      });
     }
+  }
+
+  //  Comments
+
+  const addComments = async (id, newComment) => {
+    const produtcsDoc = doc(db, "products", id);
+    await updateDoc(produtcsDoc, newComment);
+    getProduct();
   };
 
   let cloud = {
@@ -188,7 +217,9 @@ const ProductContextProvider = props => {
     editProduct,
     getProduct,
     filProducts,
+    addComments,
     getSearch,
+    getProductsDetails,
     product: state.product,
     readroduct: state.readProduct,
     productDetails: state.productDetails,
