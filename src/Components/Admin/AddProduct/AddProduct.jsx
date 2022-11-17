@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useAuth } from "../../../Context/AuthContextProvider";
 import { productContext } from "../../../Context/ProductContextProvider";
+import Navbar from "../../Navbar/Navbar";
 import "./AddProduct.css";
 
 const AddProduct = () => {
@@ -45,6 +46,7 @@ const AddProduct = () => {
 
   return (
     <>
+      {<Navbar />}
       {email === "azret@mail.ru" ? (
         <div className="body-add">
           <form id="div-add" onSubmit={e => handleAdd(e)}>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./EditProduct.css";
 import { productContext } from "../../../Context/ProductContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "../../Navbar/Navbar";
 
 const EditProduct = () => {
   const { productDetails, readOneProduct, editProduct } =
@@ -42,6 +43,7 @@ const EditProduct = () => {
 
   return (
     <>
+      {<Navbar />}
       {inpValues ? (
         <div className="body-add">
           <form id="div-add" onSubmit={e => handleSave(e)}>

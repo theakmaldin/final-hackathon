@@ -54,32 +54,32 @@ const Navbar = () => {
           {/* <Search className="searchNavbar" sx={{ mr: "35px" }}>
             <Search />
           </Search> */}
+          <div className="panelLogin">
+            <Link to="/">{user.email ? user.email : <span></span>}</Link>
 
-          <Link to="/">{user.email ? user.email : <span></span>}</Link>
+            {email ? (
+              <Link to="/auth">
+                <Face6Icon onClick={handleLogOut} className="icon_navbar" />
+              </Link>
+            ) : null}
 
-          {email ? (
-            <Link to="/auth">
-              <Face6Icon onClick={handleLogOut} className="icon_navbar" />
-            </Link>
-          ) : null}
+            {email ? null : (
+              <Link to="/auth">
+                <LogoutIcon className="icon_navbar" />
+              </Link>
+            )}
 
-          {email ? null : (
-            <Link to="/auth">
-              <LogoutIcon className="icon_navbar" />
-            </Link>
-          )}
-
-          <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit">
-            <Link to="/basket">
-              <Badge badgeContent={basketCount} color="error">
-                <AddShoppingCartIcon />
-              </Badge>
-            </Link>
-          </IconButton>
-          {/* <Search /> */}
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit">
+              <Link to="/basket">
+                <Badge badgeContent={basketCount} color="error">
+                  <AddShoppingCartIcon />
+                </Badge>
+              </Link>
+            </IconButton>
+          </div>
         </div>
       </div>
     </div>

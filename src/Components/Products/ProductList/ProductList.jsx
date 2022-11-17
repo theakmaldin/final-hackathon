@@ -6,6 +6,7 @@ import Pagination from "@mui/material/Pagination";
 import { useSearchParams } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import "./ProductList.css";
+import Navbar from "../../Navbar/Navbar";
 
 const ProductsList = () => {
   const {
@@ -72,87 +73,95 @@ const ProductsList = () => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        margin: "0px",
-      }}>
-      <Grid style={{ display: "flex" }}>
-        {/* Search */}
-        <div
-          style={{
-            width: "100%",
-            height: "110px",
-          }}>
-          <div className="container searchContainer">
-            <input
-              className="searchWindow"
-              placeholder="Введите продукт..."
-              value={searchValue}
-              onChange={e => setSearchValue(e.target.value)}
-            />
-            <SearchIcon
-              className="searchIconBtn"
-              onClick={searchValue ? handleValue : null}
-            />
+    <>
+      {" "}
+      {<Navbar />}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          margin: "0px",
+        }}>
+        <Grid style={{ display: "flex" }}>
+          {/* Search */}
+          <div
+            style={{
+              width: "100%",
+              height: "110px",
+            }}>
+            <div className="container searchContainer">
+              <input
+                className="searchWindow"
+                placeholder="Введите продукт..."
+                value={searchValue}
+                onChange={e => setSearchValue(e.target.value)}
+              />
+              <SearchIcon
+                className="searchIconBtn"
+                onClick={searchValue ? handleValue : null}
+              />
+            </div>
           </div>
-        </div>
 
-        {searchProducts ? (
-          <div className="list">
-            {searchProducts.map(item => (
-              <ProductCard item={item} key={item.id} />
-            ))}
-          </div>
-        ) : null}
+          {searchProducts ? (
+            <div className="list">
+              {searchProducts.map(item => (
+                <ProductCard item={item} key={item.id} />
+              ))}
+            </div>
+          ) : null}
 
-        {/* Filter */}
+          {/* Filter */}
 
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="all"
-          name="radio-buttons-group"
-          value={category}
-          onChange={e => setCategory(e.target.value)}
-          style={{ display: "flex", flexDirection: "unset" }}>
-          <FormControlLabel value="Кружка" control={<Radio />} label="Кружка" />
-          <FormControlLabel
-            value="Футболка"
-            control={<Radio />}
-            label="Футболка"
-          />
-          <FormControlLabel value="Маска" control={<Radio />} label="Маска" />
-          <FormControlLabel value="all" control={<Radio />} label="all" />
-        </RadioGroup>
-      </Grid>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="all"
+            name="radio-buttons-group"
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            style={{ display: "flex", flexDirection: "unset" }}>
+            <FormControlLabel
+              value="Кружка"
+              control={<Radio />}
+              label="Кружка"
+            />
+            <FormControlLabel
+              value="Футболка"
+              control={<Radio />}
+              label="Футболка"
+            />
+            <FormControlLabel value="Маска" control={<Radio />} label="Маска" />
+            <FormControlLabel value="all" control={<Radio />} label="all" />
+          </RadioGroup>
+        </Grid>
 
-      {/* Pagination */}
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-around"
-        alignItems="center"
-        sx={{ width: "90%" }}>
-        {currentData()
-          ? currentData().map(item => (
-              <Grid item={true} mt={15} mb={25} key={item.id}>
-                <ProductCard obj={item} />
-              </Grid>
-            ))
-          : null}
-      </Grid>
+        {/* Pagination */}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
+          sx={{ width: "90%" }}>
+          {currentData()
+            ? currentData().map(item => (
+                <Grid item={true} mt={15} mb={25} key={item.id}>
+                  <ProductCard obj={item} />
+                </Grid>
+              ))
+            : null}
+        </Grid>
 
-      <Pagination
-        style={{ paddingBottom: "20px" }}
-        color="primary"
-        count={count}
-        page={page}
-        onChange={handlePage}
-        variant="outlined"
-      />
-    </div>
+        <Pagination
+          style={{ paddingBottom: "20px" }}
+          color="primary"
+          count={count}
+          page={page}
+          onChange={handlePage}
+          variant="outlined"
+        />
+      </div>
+    </>
   );
 };
 

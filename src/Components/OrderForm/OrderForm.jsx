@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 import "./OrderForm.css";
 
 const OrderForm = ({ close }) => {
@@ -9,6 +10,7 @@ const OrderForm = ({ close }) => {
 
   return (
     <>
+      {<Navbar />}
       <div className="orderBack">
         <div className="orderBack__modal">
           <button onClick={() => close(false)} className="closeModal">

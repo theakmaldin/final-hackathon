@@ -17,6 +17,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 // import "./Basket.css";
 import { basketContext } from "../../Context/BasketContexProvider";
 import OrderForm from "../OrderForm/OrderForm";
+import Navbar from "../Navbar/Navbar";
 
 const Basket = () => {
   const {
@@ -34,6 +35,7 @@ const Basket = () => {
 
   return (
     <>
+      {<Navbar />}
       {modalOpen ? <OrderForm close={setModalOpen} /> : null}
       <Container maxWidth="lg">
         <Typography variant="h3">Корзина</Typography>

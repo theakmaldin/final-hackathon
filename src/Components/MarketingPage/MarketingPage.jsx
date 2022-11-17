@@ -5,7 +5,7 @@ import "./MarketingPage.css";
 const Marketing = () => {
   return (
     <div className="container-marketing">
-      {/* {<Navbar />} */}
+      {<Navbar />}
       <div className="box-marketing-1">
         <div className="content-marketing-1">
           <img

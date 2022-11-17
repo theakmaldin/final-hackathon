@@ -12,6 +12,7 @@ import { basketContext } from "../../../Context/BasketContexProvider";
 import { textAlign } from "@mui/system";
 import Comments from "../../Comments/Comments";
 import { commentContext } from "../../../Context/CommentContextProvider";
+import Navbar from "../../Navbar/Navbar";
 
 SwiperCore.use([Thumbs]);
 
@@ -49,6 +50,7 @@ const ProductDetails = () => {
 
   return (
     <div>
+      {<Navbar />}
       {productDetails ? (
         <Container className="details-body">
           <Grid display="flex" color="black">

@@ -5,7 +5,7 @@ import "./SmmPage.css";
 const SmmPage = () => {
   return (
     <div className="container-smm">
-      {/* {<Navbar />} */}
+      {<Navbar />}
       <div className="box-smm-1">
         <div className="content-smm-1">
           <img
